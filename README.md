@@ -2,6 +2,8 @@
 
 A modern web platform built with Next.js for managing and discovering communities.
 
+For detailed documentation, please visit [our documentation site](https://communityportaldocs.vercel.app).
+
 ## Features
 
 - 🚀 Modern UI built with Next.js 15 and React 19
