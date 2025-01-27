@@ -1,10 +1,10 @@
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import Link from 'next/link'
+import { Button } from '@/components/ui/button'
 
 export function Header() {
   return (
     <header className="border-b px-8">
-      <div className="container flex h-16 items-center justify-between px-4n min-w-[100%]">
+      <div className="px-4n container flex h-16 min-w-[100%] items-center justify-between">
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center">
             <span className="text-xl font-bold">com_portal</span>
@@ -24,4 +24,4 @@ export function Header() {
       </div>
     </header>
   )
-} 
+}
