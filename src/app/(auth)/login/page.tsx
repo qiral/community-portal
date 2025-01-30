@@ -32,8 +32,15 @@ export default function LoginPage() {
       </div>
 
       {/* Image Section */}
-      <div className="w-2/3">
-        <img src="/login.jpg" alt="Community" className="h-screen w-full object-cover" />
+      <div className="relative w-2/3">
+        <Image
+          src="/login.jpg"
+          alt="Community"
+          fill
+          priority
+          sizes="(max-width: 1024px) 100vw, 66vw"
+          style={{ objectFit: 'cover' }}
+        />
       </div>
     </div>
   )
