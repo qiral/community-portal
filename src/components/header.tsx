@@ -18,8 +18,14 @@ export function Header() {
           </nav>
         </div>
         <div className="flex items-center gap-4">
-          <Button variant="outline">Giriş Yap</Button>
-          <Button>Kaydol</Button>
+          <Link href="/login">
+            {' '}
+            <Button variant="outline">Giriş Yap</Button>{' '}
+          </Link>
+          <Link href="/register">
+            {' '}
+            <Button variant="outline">Kaydol</Button>{' '}
+          </Link>
         </div>
       </div>
     </header>
