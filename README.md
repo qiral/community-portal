@@ -2,24 +2,23 @@
 
 A modern web platform built with Next.js for managing and discovering communities.
 
-For detailed documentation, please visit [our documentation site](https://communityportaldocs.vercel.app).
-
 ## Features
 
-- 🚀 Modern UI built with Next.js 15 and React 19
+- 🚀 Modern UI built with Next.js 14 and React 18
 - 💅 Styled with Tailwind CSS and Shadcn UI
-- 🎨 Consistent code style with Prettier
+- 🎨 Consistent code style with ESLint and Prettier
 - 📱 Fully responsive design
 - ✨ Type-safe with TypeScript
 - 📦 Monorepo structure with Turborepo
 - ⚡️ Fast package management with pnpm
+- 🔄 Shared packages for UI components and utilities
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js (v18 or higher)
-- pnpm (v8 or higher)
+- Node.js (v20 or higher)
+- pnpm (v8.14.3 or higher)
 
 ### Installation
 
@@ -43,9 +42,8 @@ pnpm dev
 ```
 
 The applications will be available at:
-
 - Main App: `http://localhost:3000`
-- Admin Panel: `http://localhost:3001`
+- Admin Panel: `http://localhost:3010`
 
 ## Available Scripts
 
@@ -53,6 +51,8 @@ The applications will be available at:
 - `pnpm build` - Build all applications for production
 - `pnpm lint` - Run ESLint across all applications
 - `pnpm format` - Format code with Prettier
+- `pnpm format:check` - Check code formatting
+- `pnpm type-check` - Run TypeScript type checking
 - `pnpm clean` - Clean all build outputs and node_modules
 - `pnpm test` - Run tests across all applications
 
@@ -61,7 +61,6 @@ The applications will be available at:
 To add a new package to a specific application, use the following commands:
 
 #### Main Application
-
 ```bash
 # Add a production dependency
 pnpm main:add package-name
@@ -71,7 +70,6 @@ pnpm main:add -D package-name
 ```
 
 #### Admin Panel
-
 ```bash
 # Add a production dependency
 pnpm admin:add package-name
@@ -79,17 +77,6 @@ pnpm admin:add package-name
 # Add a development dependency
 pnpm admin:add -D package-name
 ```
-
-## Tech Stack
-
-- **Framework:** Next.js 15
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS
-- **UI Components:** Shadcn UI
-- **Form Handling:** React Hook Form with Zod
-- **Code Quality:** ESLint, Prettier
-- **Package Manager:** pnpm
-- **Build System:** Turborepo
 
 ## Project Structure
 
@@ -102,11 +89,11 @@ community-portal/
 │   └── admin/       # Admin panel
 │       ├── src/
 │       └── ...
-├── packages/        # Shared packages
+├── packages/
 │   ├── ui/         # Shared UI components
 │   │   ├── components/  # Reusable UI components
 │   │   ├── styles/     # Shared styles and themes
-│   │   └── icons/      # Shared icons
+│   │   └── utils/      # UI utilities
 │   ├── config/     # Shared configurations
 │   │   ├── eslint/     # ESLint configurations
 │   │   ├── typescript/ # TypeScript configurations
@@ -114,6 +101,18 @@ community-portal/
 │   └── utils/      # Shared utility functions
 └── ...config files
 ```
+
+## Tech Stack
+
+- **Framework:** Next.js 14
+- **Language:** TypeScript
+- **Styling:** Tailwind CSS
+- **UI Components:** Shadcn UI
+- **Form Handling:** React Hook Form with Zod
+- **Code Quality:** ESLint, Prettier
+- **Package Manager:** pnpm 8.14.3
+- **Build System:** Turborepo
+- **Component Library:** Radix UI
 
 ## Contributing
 
