@@ -12,26 +12,41 @@ jobs:
     steps:
       # Checkout repository
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      # Set up Node.js
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      # Setup pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
         with:
-          node-version: '23'
+          version: 8.14.3
+
+      # Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
 
       # Install dependencies
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
 
-      # Run build
-      - name: Build project
-        run: npm run build
+      # Build packages
+      - name: Build packages
+        run: pnpm build --filter "@community/*"
+
+      # Build apps
+      - name: Build apps
+        run: pnpm build --filter "{apps/*}"
+
+      # Run linting
+      - name: Run ESLint
+        run: pnpm lint
 
       # Run Prettier check
-      - name: Check code formatting with Prettier
-        run: npx prettier --check .
+      - name: Check formatting
+        run: pnpm format:check
 
-      - name: Fail on Prettier issues
-        if: failure()
-        run: exit 1
+      # Run type checking
+      - name: Type check
+        run: pnpm type-check

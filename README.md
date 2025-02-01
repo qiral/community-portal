@@ -11,13 +11,15 @@ For detailed documentation, please visit [our documentation site](https://commun
 - 🎨 Consistent code style with Prettier
 - 📱 Fully responsive design
 - ✨ Type-safe with TypeScript
+- 📦 Monorepo structure with Turborepo
+- ⚡️ Fast package management with pnpm
 
 ## Getting Started
 
 ### Prerequisites
 
 - Node.js (v18 or higher)
-- npm (v8 or higher)
+- pnpm (v8 or higher)
 
 ### Installation
 
@@ -31,24 +33,52 @@ cd community-portal
 2. Install dependencies:
 
 ```bash
-npm install
+pnpm install
 ```
 
 3. Start the development server:
 
 ```bash
-npm run dev
+pnpm dev
 ```
 
-The application will be available at `http://localhost:3000`.
+The applications will be available at:
+
+- Main App: `http://localhost:3000`
+- Admin Panel: `http://localhost:3001`
 
 ## Available Scripts
 
-- `npm run dev` - Start the development server
-- `npm run build` - Build the production application
-- `npm run start` - Start the production server
-- `npm run lint` - Run ESLint
-- `npm run format` - Format code with Prettier
+- `pnpm dev` - Start all applications in development mode
+- `pnpm build` - Build all applications for production
+- `pnpm lint` - Run ESLint across all applications
+- `pnpm format` - Format code with Prettier
+- `pnpm clean` - Clean all build outputs and node_modules
+- `pnpm test` - Run tests across all applications
+
+### Package Management
+
+To add a new package to a specific application, use the following commands:
+
+#### Main Application
+
+```bash
+# Add a production dependency
+pnpm main:add package-name
+
+# Add a development dependency
+pnpm main:add -D package-name
+```
+
+#### Admin Panel
+
+```bash
+# Add a production dependency
+pnpm admin:add package-name
+
+# Add a development dependency
+pnpm admin:add -D package-name
+```
 
 ## Tech Stack
 
@@ -58,19 +88,30 @@ The application will be available at `http://localhost:3000`.
 - **UI Components:** Shadcn UI
 - **Form Handling:** React Hook Form with Zod
 - **Code Quality:** ESLint, Prettier
-- **Package Manager:** npm
+- **Package Manager:** pnpm
+- **Build System:** Turborepo
 
 ## Project Structure
 
 ```
 community-portal/
-├── src/
-│   ├── app/           # Next.js app directory
-│   ├── components/    # React components
-│   │   ├── ui/       # Shadcn UI components
-│   │   └── ...       # Other components
-│   └── lib/          # Utility functions
-├── public/           # Static files
+├── apps/
+│   ├── main/        # Main application
+│   │   ├── src/
+│   │   └── ...
+│   └── admin/       # Admin panel
+│       ├── src/
+│       └── ...
+├── packages/        # Shared packages
+│   ├── ui/         # Shared UI components
+│   │   ├── components/  # Reusable UI components
+│   │   ├── styles/     # Shared styles and themes
+│   │   └── icons/      # Shared icons
+│   ├── config/     # Shared configurations
+│   │   ├── eslint/     # ESLint configurations
+│   │   ├── typescript/ # TypeScript configurations
+│   │   └── tailwind/   # Tailwind configurations
+│   └── utils/      # Shared utility functions
 └── ...config files
 ```
 

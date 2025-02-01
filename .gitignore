@@ -1,5 +1,15 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+apps/main/node_modules
+apps/main/.next
+apps/main/.env
+apps/main/.env.local
+
+apps/admin/node_modules
+apps/admin/.next
+apps/admin/.env
+apps/admin/.env.local
+
 # dependencies
 /node_modules
 /.pnp
@@ -43,3 +53,6 @@ next-env.d.ts
 .vscode
 
 package-lock.json
+node_modules/
+
+.turbo
