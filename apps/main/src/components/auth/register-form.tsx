@@ -12,6 +12,7 @@ const registerFormSchema = z
   .object({
     isim: z.string().min(2, 'İsim en az 2 karakter olmalıdır.'),
     soyisim: z.string().min(2, 'Soyisim en az 2 karakter olmalıdır.'),
+    mail: z.string().email('E-Mail giriniz'),
     ogrenciNo: z
       .string()
       .min(9, 'Öğrenci numarası 9 haneli olmalıdır.')
@@ -24,7 +25,6 @@ const registerFormSchema = z
       .regex(/^05[0-9]{9}$/, 'Geçersiz telefon numarası formatı'),
     sifre: z.string().min(6, 'Şifre en az 6 karakter olmalıdır.'),
     sifreTekrar: z.string().min(6, 'Şifre tekrarı en az 6 karakter olmalıdır.'),
-    mail: z.string().email('E-Mail giriniz'),
   })
   .refine((data) => data.sifre === data.sifreTekrar, {
     message: 'Şifreler eşleşmiyor!',
