@@ -1,4 +1,4 @@
-import { RegisterForm } from "/home/runner/work/Community-Portal/Community-Portal/apps/main/src/components/auth/register-form"
+import { RegisterForm } from "../../../components/auth/register-form"
 
 export default function RegisterPage() {
   return (
