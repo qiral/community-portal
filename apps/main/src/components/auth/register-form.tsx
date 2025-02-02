@@ -23,6 +23,7 @@ const registerFormSchema = z.object({
     .regex(/^05[0-9]{9}$/, "Geçersiz telefon numarası formatı"),
   sifre: z.string().min(6, "Şifre en az 6 karakter olmalıdır."),
   sifreTekrar: z.string().min(6, "Şifre tekrarı en az 6 karakter olmalıdır."),
+  mail: z.string().email('E-Mail giriniz'),
 }).refine(data => data.sifre === data.sifreTekrar, {
   message: "Şifreler eşleşmiyor!",
   path: ["sifreTekrar"],
@@ -42,6 +43,7 @@ export function RegisterForm() {
       telefonNo: '',
       sifre: '',
       sifreTekrar: '',
+      mail: '',
     },
   })
 
@@ -92,7 +94,22 @@ export function RegisterForm() {
             </FormItem>
           )}
         />
-
+       
+        {}
+        <FormField
+          control={form.control}
+          name="mail"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>E-Mail</FormLabel>
+              <FormControl>
+                <Input placeholder="example@mail.com" disabled={isLoading} {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        
         {}
         <FormField
           control={form.control}
