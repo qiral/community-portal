@@ -8,26 +8,28 @@ import { Button } from '../ui/button'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
 import { Input } from '../ui/input'
 
-const registerFormSchema = z.object({
-  isim: z.string().min(2, "İsim en az 2 karakter olmalıdır."),
-  soyisim: z.string().min(2, "Soyisim en az 2 karakter olmalıdır."),
-  ogrenciNo: z
-    .string()
-    .min(9, "Öğrenci numarası 9 haneli olmalıdır.")
-    .max(9, "Öğrenci numarası 9 haneli olmalıdır.")
-    .regex(/^[0-9]+$/, "Sadece rakam kullanılmalıdır"),
-  telefonNo: z
-    .string()
-    .min(11, "Telefon numarası 11 haneli olmalıdır (örn: 05551234567)")
-    .max(11, "Telefon numarası 11 haneli olmalıdır")
-    .regex(/^05[0-9]{9}$/, "Geçersiz telefon numarası formatı"),
-  sifre: z.string().min(6, "Şifre en az 6 karakter olmalıdır."),
-  sifreTekrar: z.string().min(6, "Şifre tekrarı en az 6 karakter olmalıdır."),
-  mail: z.string().email('E-Mail giriniz'),
-}).refine(data => data.sifre === data.sifreTekrar, {
-  message: "Şifreler eşleşmiyor!",
-  path: ["sifreTekrar"],
-});
+const registerFormSchema = z
+  .object({
+    isim: z.string().min(2, 'İsim en az 2 karakter olmalıdır.'),
+    soyisim: z.string().min(2, 'Soyisim en az 2 karakter olmalıdır.'),
+    ogrenciNo: z
+      .string()
+      .min(9, 'Öğrenci numarası 9 haneli olmalıdır.')
+      .max(9, 'Öğrenci numarası 9 haneli olmalıdır.')
+      .regex(/^[0-9]+$/, 'Sadece rakam kullanılmalıdır'),
+    telefonNo: z
+      .string()
+      .min(11, 'Telefon numarası 11 haneli olmalıdır (örn: 05*********)')
+      .max(11, 'Telefon numarası 11 haneli olmalıdır')
+      .regex(/^05[0-9]{9}$/, 'Geçersiz telefon numarası formatı'),
+    sifre: z.string().min(6, 'Şifre en az 6 karakter olmalıdır.'),
+    sifreTekrar: z.string().min(6, 'Şifre tekrarı en az 6 karakter olmalıdır.'),
+    mail: z.string().email('E-Mail giriniz'),
+  })
+  .refine((data) => data.sifre === data.sifreTekrar, {
+    message: 'Şifreler eşleşmiyor!',
+    path: ['sifreTekrar'],
+  })
 
 type RegisterFormValues = z.infer<typeof registerFormSchema>
 
@@ -51,9 +53,9 @@ export function RegisterForm() {
     setIsLoading(true)
     try {
       // API request buraya
-      console.log("Gönderilen Veri:", {
+      console.log('Gönderilen Veri:', {
         ...data,
-        ogrenciNo: Number(data.ogrenciNo)
+        ogrenciNo: Number(data.ogrenciNo),
       })
     } catch (error) {
       console.error(error)
@@ -94,7 +96,6 @@ export function RegisterForm() {
             </FormItem>
           )}
         />
-       
         {}
         <FormField
           control={form.control}
@@ -109,7 +110,6 @@ export function RegisterForm() {
             </FormItem>
           )}
         />
-        
         {}
         <FormField
           control={form.control}
@@ -118,12 +118,12 @@ export function RegisterForm() {
             <FormItem>
               <FormLabel>Öğrenci Numarası</FormLabel>
               <FormControl>
-                <Input 
-                  placeholder="123456789" 
+                <Input
+                  placeholder="123456789"
                   type="text"
                   maxLength={9}
-                  disabled={isLoading} 
-                  {...field} 
+                  disabled={isLoading}
+                  {...field}
                 />
               </FormControl>
               <FormMessage />
@@ -139,12 +139,12 @@ export function RegisterForm() {
             <FormItem>
               <FormLabel>Telefon Numarası</FormLabel>
               <FormControl>
-                <Input 
-                  placeholder="05*********" 
+                <Input
+                  placeholder="05*********"
                   type="tel"
                   maxLength={11}
-                  disabled={isLoading} 
-                  {...field} 
+                  disabled={isLoading}
+                  {...field}
                 />
               </FormControl>
               <FormMessage />
@@ -160,12 +160,7 @@ export function RegisterForm() {
             <FormItem>
               <FormLabel>Şifre</FormLabel>
               <FormControl>
-                <Input 
-                  placeholder="******" 
-                  type="password" 
-                  disabled={isLoading} 
-                  {...field} 
-                />
+                <Input placeholder="******" type="password" disabled={isLoading} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -180,12 +175,7 @@ export function RegisterForm() {
             <FormItem>
               <FormLabel>Şifre Tekrarı</FormLabel>
               <FormControl>
-                <Input 
-                  placeholder="******" 
-                  type="password" 
-                  disabled={isLoading} 
-                  {...field} 
-                />
+                <Input placeholder="******" type="password" disabled={isLoading} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
