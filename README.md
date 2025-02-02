@@ -42,6 +42,7 @@ pnpm dev
 ```
 
 The applications will be available at:
+
 - Main App: `http://localhost:3000`
 - Admin Panel: `http://localhost:3010`
 
@@ -61,6 +62,7 @@ The applications will be available at:
 To add a new package to a specific application, use the following commands:
 
 #### Main Application
+
 ```bash
 # Add a production dependency
 pnpm main:add package-name
@@ -70,6 +72,7 @@ pnpm main:add -D package-name
 ```
 
 #### Admin Panel
+
 ```bash
 # Add a production dependency
 pnpm admin:add package-name

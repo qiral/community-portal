@@ -7,3 +7,4 @@ public
 package-lock.json
 yarn.lock
 pnpm-lock.yaml 
+index.d.ts
