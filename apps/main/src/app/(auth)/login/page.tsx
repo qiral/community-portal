@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
-import { LoginForm } from '../../../components/auth/login-form'
+import { LoginForm } from '@/components/auth/login-form'
 
 export const metadata: Metadata = {
   title: 'Giriş Yap - Community Portal',
@@ -34,7 +34,7 @@ export default function LoginPage() {
       {/* Image Section */}
       <div className="relative w-2/3">
         <Image
-          src="/login.jpg"
+          src="https://mxayitmkbfthrunrhgfk.supabase.co/storage/v1/object/public/images//login.jpg"
           alt="Community"
           fill
           priority
