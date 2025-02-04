@@ -11,9 +11,9 @@ export function Header() {
           </Link>
           <nav className="flex gap-4">
             <Link href="/">Ana Sayfa</Link>
-            <Link href="/kulüpler">Kulüpler</Link>
-            <Link href="/etkinlikler">Etkinlikler</Link>
-            <Link href="/galeri">Galeri</Link>
+            <Link href="/clubs">Kulüpler</Link>
+            <Link href="/events">Etkinlikler</Link>
+            <Link href="/gallery">Galeri</Link>
             <Link href="/feed">Feed</Link>
           </nav>
         </div>
