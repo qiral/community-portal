@@ -3,7 +3,7 @@ import { supabase } from "@/lib/supabaseClient";
 export async function MakeRequest(
     url: string,
     method: "GET" | "POST" | "PUT" | "DELETE" = "GET",
-    body: any = null,
+    body: unknown = null,
     extraHeaders: Record<string, string> = {}
 ) {
     const { data } = await supabase.auth.getSession();

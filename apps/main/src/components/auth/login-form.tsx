@@ -45,8 +45,12 @@ export function LoginForm() {
       setTimeout(() => {
         router.push('/')
       }, 2000)
-    } catch (error: any) {
-      setError(error.message || 'Giriş sırasında bir hata oluştu.')
+    } catch (error) {
+      if (error instanceof Error) {
+        setError(error.message || 'Giriş sırasında bir hata oluştu.')
+      } else {
+        setError('Beklenmeyen bir hata oluştu.')
+      }
       console.error(error)
     } finally {
       setIsLoading(false)

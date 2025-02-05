@@ -71,7 +71,7 @@ export function RegisterForm() {
         router.push('/login')
       }, 2000)
     } catch (error) {
-      setError((error as any).message || 'Kayıt sırasında bir hata oluştu.')
+      setError((error as Error).message || 'Kayıt sırasında bir hata oluştu.')
       console.error(error)
     } finally {
       setIsLoading(false)
