@@ -5,8 +5,11 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import { Button } from '../ui/button'
+import { supabase } from '../../lib/supabaseClient'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
+import { signUp } from './Auth'
 import { Input } from '../ui/input'
+import { useRouter } from 'next/navigation'
 
 const registerFormSchema = z
   .object({
@@ -35,6 +38,9 @@ type RegisterFormValues = z.infer<typeof registerFormSchema>
 
 export function RegisterForm() {
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [successMessage, setSuccessMessage] = useState<string | null>(null)
+  const router = useRouter()
 
   const form = useForm<RegisterFormValues>({
     resolver: zodResolver(registerFormSchema),
@@ -51,13 +57,22 @@ export function RegisterForm() {
 
   async function onSubmit(data: RegisterFormValues) {
     setIsLoading(true)
+    setError(null)
+    setSuccessMessage(null)
+
     try {
-      // API request buraya
-      console.log('Gönderilen Veri:', {
-        ...data,
-        ogrenciNo: Number(data.ogrenciNo),
-      })
+      const message = await signUp(data.mail, data.sifre)
+      if (!message) {
+        setError('Kayıt işlemi sırasında bir hata oluştu.')
+        return
+      }
+
+      setSuccessMessage('Kayıt başarılı! Giriş sayfasına yönlendiriliyorsunuz...')
+      setTimeout(() => {
+        router.push('/login')
+      }, 2000)
     } catch (error) {
+      setError((error as any).message || 'Kayıt sırasında bir hata oluştu.')
       console.error(error)
     } finally {
       setIsLoading(false)
@@ -67,7 +82,7 @@ export function RegisterForm() {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-        {}
+        {/* İsim */}
         <FormField
           control={form.control}
           name="isim"
@@ -75,14 +90,14 @@ export function RegisterForm() {
             <FormItem>
               <FormLabel>İsim</FormLabel>
               <FormControl>
-                <Input placeholder="Isim" disabled={isLoading} {...field} />
+                <Input placeholder="İsim" disabled={isLoading} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-
-        {}
+  
+        {/* Soyisim */}
         <FormField
           control={form.control}
           name="soyisim"
@@ -96,7 +111,8 @@ export function RegisterForm() {
             </FormItem>
           )}
         />
-        {}
+  
+        {/* E-Mail */}
         <FormField
           control={form.control}
           name="mail"
@@ -110,7 +126,8 @@ export function RegisterForm() {
             </FormItem>
           )}
         />
-        {}
+  
+        {/* Öğrenci Numarası */}
         <FormField
           control={form.control}
           name="ogrenciNo"
@@ -118,20 +135,14 @@ export function RegisterForm() {
             <FormItem>
               <FormLabel>Öğrenci Numarası</FormLabel>
               <FormControl>
-                <Input
-                  placeholder="123456789"
-                  type="text"
-                  maxLength={9}
-                  disabled={isLoading}
-                  {...field}
-                />
+                <Input placeholder="123456789" type="text" maxLength={9} disabled={isLoading} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-
-        {}
+  
+        {/* Telefon Numarası */}
         <FormField
           control={form.control}
           name="telefonNo"
@@ -139,20 +150,14 @@ export function RegisterForm() {
             <FormItem>
               <FormLabel>Telefon Numarası</FormLabel>
               <FormControl>
-                <Input
-                  placeholder="05*********"
-                  type="tel"
-                  maxLength={11}
-                  disabled={isLoading}
-                  {...field}
-                />
+                <Input placeholder="05*********" type="tel" maxLength={11} disabled={isLoading} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-
-        {}
+  
+        {/* Şifre */}
         <FormField
           control={form.control}
           name="sifre"
@@ -166,8 +171,8 @@ export function RegisterForm() {
             </FormItem>
           )}
         />
-
-        {}
+  
+        {/* Şifre Tekrarı */}
         <FormField
           control={form.control}
           name="sifreTekrar"
@@ -181,7 +186,12 @@ export function RegisterForm() {
             </FormItem>
           )}
         />
-
+  
+        {/* Hata ve Başarı Mesajları */}
+        {error && <p className="text-red-500">{error}</p>}
+        {successMessage && <p className="text-green-500">{successMessage}</p>}
+  
+        {/* Kayıt Butonu */}
         <Button className="w-full" type="submit" disabled={isLoading}>
           {isLoading ? 'Kayıt Olunuyor...' : 'Kayıt Ol'}
         </Button>

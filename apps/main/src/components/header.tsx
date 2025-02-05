@@ -9,9 +9,36 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { useEffect, useState } from 'react'
+import { supabase } from '@/lib/supabaseClient'
+import { signOut } from '@/components/auth/Auth'
 
 export function Header() {
-  const isLoggedIn = true
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
+  useEffect(() => {
+    const checkUserSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession()
+      setIsLoggedIn(!!session)
+    }
+    checkUserSession()
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(() => {
+      checkUserSession()
+    })
+    return () => {
+      subscription.unsubscribe()
+    }
+  }, [])
+
+  const handleSignOut = async () => {
+    try {
+      await signOut()
+      setIsLoggedIn(false)
+    } catch (error) {
+      console.error('Çıkış yaparken bir hata oluştu:', error)
+    }
+  }
+
   return (
     <header className="border-b px-8">
       <div className="px-4n container flex h-16 min-w-[100%] items-center justify-between">
@@ -30,12 +57,10 @@ export function Header() {
         {!isLoggedIn ? (
           <div className="flex items-center gap-4">
             <Link href="/login">
-              {' '}
-              <Button variant="outline">Giriş Yap</Button>{' '}
+              <Button variant="outline">Giriş Yap</Button>
             </Link>
             <Link href="/register">
-              {' '}
-              <Button variant="outline">Kaydol</Button>{' '}
+              <Button variant="outline">Kaydol</Button>
             </Link>
           </div>
         ) : (
@@ -51,7 +76,7 @@ export function Header() {
               <DropdownMenuItem>Hesabım</DropdownMenuItem>
               <DropdownMenuItem>Ayarlar</DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Çıkış yap</DropdownMenuItem>
+              <DropdownMenuItem onClick={handleSignOut}>Çıkış yap</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         )}
