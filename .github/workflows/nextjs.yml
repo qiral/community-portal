@@ -35,6 +35,11 @@ jobs:
       - name: Build packages
         run: pnpm build --filter "@community/*"
 
+      - name: Create .env file
+        run: |
+          echo "NEXT_PUBLIC_SUPABASE_URL=${{ secrets.NEXT_PUBLIC_SUPABASE_URL }}" > ./apps/main/.env.local
+          echo "NEXT_PUBLIC_SUPABASE_ANON_KEY=${{ secrets.NEXT_PUBLIC_SUPABASE_ANON_KEY }}" >> ./apps/main/.env.local
+
       # Build apps
       - name: Build apps
         env:
