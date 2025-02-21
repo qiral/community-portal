@@ -12,7 +12,7 @@ export default function Home() {
           <div className="grid items-center gap-6 lg:grid-cols-2 lg:gap-12">
             <div className="space-y-4">
               <h1 className="text-4xl font-bold">Bir Topluluktan Daha Fazlası</h1>
-              <p className="text-muted-foreground text-xl">Sende Yüzlerce Topluluk Arasına Katıl</p> a
+              <p className="text-muted-foreground text-xl">Sende Yüzlerce Topluluk Arasına Katıl</p>
               <div className="flex gap-4">
                 <Button size="lg">Topluluğunu Ekle!</Button>
                 <Button variant="outline" size="lg">
