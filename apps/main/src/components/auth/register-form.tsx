@@ -6,11 +6,9 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
-import { signUp } from './Auth'
+import { registerUser } from '@/lib/register'
 import { Input } from '@/components/ui/input'
 import { useRouter } from 'next/navigation'
-import { MakeRequest } from '@/lib/request'
-import { supabase } from '@/lib/supabaseClient'
 
 const registerFormSchema = z
   .object({
@@ -62,24 +60,19 @@ export function RegisterForm() {
     setSuccessMessage(null)
 
     try {
-      // Supabase Register
-      const userID = await signUp(data.mail, data.sifre)
-      if (!userID) {
-        setError('Kayıt işlemi sırasında bir hata oluştu.')
-        return
+      const result = await registerUser(
+        data.isim,
+        data.soyisim,
+        data.ogrenciNo,
+        data.telefonNo,
+        data.mail,
+        data.sifre
+      )
+
+      if (!result.success) {
+        throw new Error(result.message)
       }
-      // API Register
-      const response = await MakeRequest('/api/user', 'POST', {
-        first_name: data.isim,
-        last_name: data.soyisim,
-        school_number: data.ogrenciNo,
-        telephone_number: data.telefonNo,
-        email: data.mail,
-      })
-      if (!response || response.error) {
-        await supabase.auth.admin.deleteUser(userID)
-        throw new Error(response?.error || 'Sunucu hatası oluştu.')
-      }
+
       setSuccessMessage('Kayıt başarılı! Giriş sayfasına yönlendiriliyorsunuz...')
       setTimeout(() => {
         router.push('/login')
