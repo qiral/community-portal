@@ -9,6 +9,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { signUp } from './Auth'
 import { Input } from '@/components/ui/input'
 import { useRouter } from 'next/navigation'
+import { MakeRequest } from '@/lib/request'
 
 const registerFormSchema = z
   .object({
@@ -60,12 +61,20 @@ export function RegisterForm() {
     setSuccessMessage(null)
 
     try {
+      // Supabase Register
       const message = await signUp(data.mail, data.sifre)
       if (!message) {
         setError('Kayıt işlemi sırasında bir hata oluştu.')
         return
       }
-
+      // API Register
+      await MakeRequest("/api/user", "POST", {
+        first_name: data.isim,
+        last_name: data.soyisim,
+        school_number: data.ogrenciNo,
+        telephone_number: data.telefonNo,
+        email: data.mail,
+      });
       setSuccessMessage('Kayıt başarılı! Giriş sayfasına yönlendiriliyorsunuz...')
       setTimeout(() => {
         router.push('/login')
