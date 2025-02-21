@@ -104,7 +104,7 @@ export function RegisterForm() {
             </FormItem>
           )}
         />
-  
+
         {/* Soyisim */}
         <FormField
           control={form.control}
@@ -119,7 +119,7 @@ export function RegisterForm() {
             </FormItem>
           )}
         />
-  
+
         {/* E-Mail */}
         <FormField
           control={form.control}
@@ -134,7 +134,7 @@ export function RegisterForm() {
             </FormItem>
           )}
         />
-  
+
         {/* Öğrenci Numarası */}
         <FormField
           control={form.control}
@@ -143,13 +143,19 @@ export function RegisterForm() {
             <FormItem>
               <FormLabel>Öğrenci Numarası</FormLabel>
               <FormControl>
-                <Input placeholder="123456789" type="text" maxLength={9} disabled={isLoading} {...field} />
+                <Input
+                  placeholder="123456789"
+                  type="text"
+                  maxLength={9}
+                  disabled={isLoading}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-  
+
         {/* Telefon Numarası */}
         <FormField
           control={form.control}
@@ -158,13 +164,19 @@ export function RegisterForm() {
             <FormItem>
               <FormLabel>Telefon Numarası</FormLabel>
               <FormControl>
-                <Input placeholder="05*********" type="tel" maxLength={11} disabled={isLoading} {...field} />
+                <Input
+                  placeholder="05*********"
+                  type="tel"
+                  maxLength={11}
+                  disabled={isLoading}
+                  {...field}
+                />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-  
+
         {/* Şifre */}
         <FormField
           control={form.control}
@@ -179,7 +191,7 @@ export function RegisterForm() {
             </FormItem>
           )}
         />
-  
+
         {/* Şifre Tekrarı */}
         <FormField
           control={form.control}
@@ -194,11 +206,11 @@ export function RegisterForm() {
             </FormItem>
           )}
         />
-  
+
         {/* Hata ve Başarı Mesajları */}
         {error && <p className="text-red-500">{error}</p>}
         {successMessage && <p className="text-green-500">{successMessage}</p>}
-  
+
         {/* Kayıt Butonu */}
         <Button className="w-full" type="submit" disabled={isLoading}>
           {isLoading ? 'Kayıt Olunuyor...' : 'Kayıt Ol'}
