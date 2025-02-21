@@ -68,16 +68,20 @@ export function RegisterForm() {
         return
       }
       // API Register
-      const response = await MakeRequest("/api/user", "POST", {
+      const response = await MakeRequest('/api/user', 'POST', {
         first_name: data.isim,
         last_name: data.soyisim,
         school_number: data.ogrenciNo,
         telephone_number: data.telefonNo,
         email: data.mail,
-      });
-  
+      })
+
       if (!response || response.error) {
-        throw new Error(response?.error || "Sunucu hatası oluştu.");
+        throw new Error(response?.error || 'Sunucu hatası oluştu.')
+      }
+
+      if (!response || response.error) {
+        throw new Error(response?.error || 'Sunucu hatası oluştu.')
       }
       setSuccessMessage('Kayıt başarılı! Giriş sayfasına yönlendiriliyorsunuz...')
       setTimeout(() => {
