@@ -77,7 +77,7 @@ export function RegisterForm() {
         email: data.mail,
       })
       if (!response || response.error) {
-        await supabase.auth.admin.deleteUser(userID);
+        await supabase.auth.admin.deleteUser(userID)
         throw new Error(response?.error || 'Sunucu hatası oluştu.')
       }
       setSuccessMessage('Kayıt başarılı! Giriş sayfasına yönlendiriliyorsunuz...')

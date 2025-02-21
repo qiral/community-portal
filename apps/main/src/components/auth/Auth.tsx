@@ -5,9 +5,9 @@ import { supabase } from '@/lib/supabaseClient'
 export async function signUp(email: string, password: string) {
   const { data, error } = await supabase.auth.signUp({ email, password })
   if (error || !data?.user) {
-    throw new Error(error?.message || "Kayıt işlemi sırasında bir hata oluştu.");
+    throw new Error(error?.message || 'Kayıt işlemi sırasında bir hata oluştu.')
   }
-  return data.user.id;
+  return data.user.id
 }
 
 export async function signIn(email: string, password: string) {
