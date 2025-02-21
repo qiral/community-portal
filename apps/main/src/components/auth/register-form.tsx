@@ -10,6 +10,7 @@ import { signUp } from './Auth'
 import { Input } from '@/components/ui/input'
 import { useRouter } from 'next/navigation'
 import { MakeRequest } from '@/lib/request'
+import { supabase } from '@/lib/supabaseClient'
 
 const registerFormSchema = z
   .object({
@@ -62,8 +63,8 @@ export function RegisterForm() {
 
     try {
       // Supabase Register
-      const message = await signUp(data.mail, data.sifre)
-      if (!message) {
+      const userID = await signUp(data.mail, data.sifre)
+      if (!userID) {
         setError('Kayıt işlemi sırasında bir hata oluştu.')
         return
       }
@@ -75,12 +76,8 @@ export function RegisterForm() {
         telephone_number: data.telefonNo,
         email: data.mail,
       })
-
       if (!response || response.error) {
-        throw new Error(response?.error || 'Sunucu hatası oluştu.')
-      }
-
-      if (!response || response.error) {
+        await supabase.auth.admin.deleteUser(userID);
         throw new Error(response?.error || 'Sunucu hatası oluştu.')
       }
       setSuccessMessage('Kayıt başarılı! Giriş sayfasına yönlendiriliyorsunuz...')
