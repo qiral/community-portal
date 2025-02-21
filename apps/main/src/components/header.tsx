@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import Link from 'next/link'
 import { Button } from '@community/ui'
@@ -20,11 +20,15 @@ export function Header() {
 
   useEffect(() => {
     const checkUserSession = async () => {
-      const { data: { session } } = await supabase.auth.getSession()
+      const {
+        data: { session },
+      } = await supabase.auth.getSession()
       setIsLoggedIn(!!session)
     }
     checkUserSession()
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(() => {
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange(() => {
       checkUserSession()
     })
     return () => {

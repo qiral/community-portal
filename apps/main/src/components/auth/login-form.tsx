@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -90,7 +90,8 @@ export function LoginForm() {
           {isLoading ? 'Giriş yapılıyor...' : 'Giriş Yap'}
         </Button>
         {error && <div className="text-red-500">{error}</div>} {/* Error message display */}
-        {successMessage && <div className="text-green-500">{successMessage}</div>} {/* Success message display */}
+        {successMessage && <div className="text-green-500">{successMessage}</div>}{' '}
+        {/* Success message display */}
       </form>
     </Form>
   )
