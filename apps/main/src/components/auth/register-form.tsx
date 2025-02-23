@@ -6,7 +6,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
-import { signUp } from './Auth'
+import { registerUser } from '@/lib/register'
 import { Input } from '@/components/ui/input'
 import { useRouter } from 'next/navigation'
 
@@ -60,10 +60,17 @@ export function RegisterForm() {
     setSuccessMessage(null)
 
     try {
-      const message = await signUp(data.mail, data.sifre)
-      if (!message) {
-        setError('Kayıt işlemi sırasında bir hata oluştu.')
-        return
+      const result = await registerUser(
+        data.isim,
+        data.soyisim,
+        data.ogrenciNo,
+        data.telefonNo,
+        data.mail,
+        data.sifre
+      )
+
+      if (!result.success) {
+        throw new Error(result.message)
       }
 
       setSuccessMessage('Kayıt başarılı! Giriş sayfasına yönlendiriliyorsunuz...')
