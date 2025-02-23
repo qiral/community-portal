@@ -1,5 +1,5 @@
 import { supabase } from '@/lib/supabaseClient'
-import { MakeRequest } from '@/lib/request'
+import { MakeAuthenticatedRequest, MakeRequest } from '@/lib/request'
 import { signUp } from '@/components/auth/Auth'
 
 export async function registerUser(
@@ -20,7 +20,8 @@ export async function registerUser(
     }
 
     // Backend register
-    const response = await MakeRequest('/api/user', 'POST', {
+    const response = await MakeRequest('/user', 'POST', {
+      id: userID,
       first_name: firstName,
       last_name: lastName,
       school_number: schoolNumber,
