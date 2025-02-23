@@ -1,5 +1,5 @@
 import { supabase } from '@/lib/supabaseClient'
-import { MakeAuthenticatedRequest, MakeRequest } from '@/lib/request'
+import { MakeRequest } from '@/lib/request'
 import { signUp } from '@/components/auth/Auth'
 
 export async function registerUser(
