@@ -20,22 +20,52 @@ A modern web platform built with Next.js for managing and discovering communitie
 - Node.js (v20 or higher)
 - pnpm (v8.14.3 or higher)
 
-### Installation
+## Installation
 
-1. Clone the repository:
+### 1. Clone the repository:
 
 ```bash
 git clone https://github.com/yourusername/community-portal.git
 cd community-portal
 ```
 
-2. Install dependencies:
+### 2. Install dependencies:
 
 ```bash
 pnpm install
 ```
 
-3. Start the development server:
+### 3. Setup Supabase:
+
+This project uses Supabase for authentication and data management. Follow the steps below to configure it:
+
+#### 3.1. Create a Supabase project:
+
+Go to [Supabase](https://supabase.com/) and log in. After your logged in:
+
+- Click **"New Project"** and enter a project name.
+- Select a **database region** and click **"Create new project"**.
+
+#### 3.2. Get your project URL and API keys:
+
+Navigate to **Project Settings** → **API**. Copy the following keys:
+
+- **Project URL**
+- **Service Role Key** (Keep this secret)
+
+#### 3.3. Configure environment variables:
+
+Add the URL and API keys to `.env.local` file under apps/main:
+
+```plaintext
+NEXT_PUBLIC_SUPABASE_URL=https://your-supabase-project-url.supabase.co
+NEXT_PUBLIC_SUPABASE_KEY=your-anon-key
+
+#Your backend api url
+NEXT_PUBLIC_API_URL=https://your-api-url.com
+```
+
+### 4. Start the development server:
 
 ```bash
 pnpm dev
