@@ -55,11 +55,12 @@ Navigate to **Project Settings** → **API**. Copy the following keys:
 
 #### 3.3. Configure environment variables:
 
-Add the URL and API keys to `.env.local` file under main:
+Add the URL and API keys to `.env.local` file under apps/main:
 
 ```plaintext
 NEXT_PUBLIC_SUPABASE_URL=https://your-supabase-project-url.supabase.co
 NEXT_PUBLIC_SUPABASE_KEY=your-anon-key
+NEXT_PUBLIC_API_URL=https://your-api-url.com
 ```
 
 ### 4. Start the development server:
