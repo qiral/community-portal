@@ -34,22 +34,25 @@ cd community-portal
 ```bash
 pnpm install
 ```
+
 ### 3. Setup Supabase:
-   
+
 This project uses Supabase for authentication and data management. Follow the steps below to configure it:
 
 #### 3.1. Create a Supabase project:
 
 Go to [Supabase](https://supabase.com/) and log in. After your logged in:
+
 - Click **"New Project"** and enter a project name.
 - Select a **database region** and click **"Create new project"**.
 
 #### 3.2. Get your project URL and API keys:
 
-Navigate to **Project Settings** → **API**. Copy the following keys:  
-- **Project URL**   
+Navigate to **Project Settings** → **API**. Copy the following keys:
+
+- **Project URL**
 - **Service Role Key** (Keep this secret)
-  
+
 #### 3.3. Configure environment variables:
 
 Add the URL and API keys to `.env.local` file under main:
