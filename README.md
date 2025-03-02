@@ -60,6 +60,8 @@ Add the URL and API keys to `.env.local` file under apps/main:
 ```plaintext
 NEXT_PUBLIC_SUPABASE_URL=https://your-supabase-project-url.supabase.co
 NEXT_PUBLIC_SUPABASE_KEY=your-anon-key
+
+#Your backend api url
 NEXT_PUBLIC_API_URL=https://your-api-url.com
 ```
 
