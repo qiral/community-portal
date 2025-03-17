@@ -1,4 +1,4 @@
-import { supabase } from '@/lib/supabaseClient'
+import { createClient } from '@/lib/supabase/client'
 import { MakeRequest } from '@/lib/request'
 import { signUp } from '@/components/auth/Auth'
 
@@ -11,6 +11,7 @@ export async function registerUser(
   password: string
 ) {
   try {
+    const supabase = await createClient()
     // To Do: Check if the user already exists
 
     // Supabase register
