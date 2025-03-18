@@ -12,11 +12,23 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { useEffect, useState } from 'react'
-import { supabase } from '@/lib/supabaseClient'
+import { createClient } from '@/lib/supabase/client'
 import { signOut } from '@/components/auth/Auth'
 
 export function Header() {
+  const supabase = createClient()
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [userEmail, setUserEmail] = useState('')
+  //after will be changed to user name
+  useEffect(() => {
+    const getUserEmail = async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser()
+      setUserEmail(user?.email || '')
+    }
+    getUserEmail()
+  }, [supabase])
 
   useEffect(() => {
     const checkUserSession = async () => {
@@ -78,7 +90,7 @@ export function Header() {
               </Avatar>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuLabel>İsim Soyisim</DropdownMenuLabel>
+              <DropdownMenuLabel>{userEmail}</DropdownMenuLabel>
               <DropdownMenuItem>Hesabım</DropdownMenuItem>
               <DropdownMenuItem>Ayarlar</DropdownMenuItem>
               <DropdownMenuSeparator />

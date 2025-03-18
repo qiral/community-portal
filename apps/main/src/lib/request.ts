@@ -1,4 +1,4 @@
-import { supabase } from '@/lib/supabaseClient'
+import { createClient } from '@/lib/supabase/client'
 
 export const baseUrl = process.env.NEXT_PUBLIC_API_URL
 
@@ -9,6 +9,7 @@ export async function MakeAuthenticatedRequest(
   extraHeaders: Record<string, string> = {}
 ) {
   try {
+    const supabase = await createClient()
     const { data, error: sessionError } = await supabase.auth.getSession()
     if (sessionError || !data.session?.access_token) {
       return new Error('User is not authenticated')
