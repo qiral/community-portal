@@ -7,4 +7,4 @@ const nextConfig = {
   transpilePackages: ['@community/ui', '@community/utils'],
 }
 
-module.exports = nextConfig 
+module.exports = nextConfig
