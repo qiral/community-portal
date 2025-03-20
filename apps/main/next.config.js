@@ -4,9 +4,9 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "mxayitmkbfthrunrhgfk.supabase.co",
-        pathname: "/storage/v1/object/public/images/**",
+        protocol: 'https',
+        hostname: 'mxayitmkbfthrunrhgfk.supabase.co',
+        pathname: '/storage/v1/object/public/images/**',
       },
     ],
   },
