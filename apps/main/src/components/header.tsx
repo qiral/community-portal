@@ -46,7 +46,7 @@ export function Header() {
     return () => {
       subscription.unsubscribe()
     }
-  }, [])
+  }, [supabase])
 
   const handleSignOut = async () => {
     try {

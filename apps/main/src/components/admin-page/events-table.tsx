@@ -80,7 +80,7 @@ const events = [
 ]
 
 export function EventsTable() {
-  const [data, setData] = useState(events)
+  const [data] = useState(events)
 
   return (
     <div className="w-full">

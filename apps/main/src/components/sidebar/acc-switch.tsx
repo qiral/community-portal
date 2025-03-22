@@ -138,7 +138,7 @@ export function AccountSwitcher() {
                 Admin hesabınız yok
               </DropdownMenuItem>
             ) : (
-              accounts.map((account, index) => (
+              accounts.map((account) => (
                 <DropdownMenuItem
                   key={account.id}
                   onClick={() => handleAccountClick(account)}

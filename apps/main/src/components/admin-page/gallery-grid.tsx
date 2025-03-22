@@ -66,7 +66,7 @@ const galleryItems = [
 ]
 
 export function GalleryGrid() {
-  const [data, setData] = useState(galleryItems)
+  const [data] = useState(galleryItems)
 
   return (
     <Tabs defaultValue="all" className="w-full">

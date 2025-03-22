@@ -14,7 +14,7 @@ import { useToast } from '@/hooks/use-toast'
 
 export default function KulupBilgileriPage() {
   const { selectedClub } = useSelectedClub()
-  const [clubData, setClubData] = useState<any>(null)
+  const [clubData, setClubData] = useState<{ name: string; description: string; email: string; created_at: string } | null>(null)
 
   useEffect(() => {
     if (!selectedClub) return
@@ -84,7 +84,7 @@ export default function KulupBilgileriPage() {
                 <Input
                   id="name"
                   value={clubData?.name || ''}
-                  onChange={(e) => setClubData({ ...clubData, name: e.target.value })}
+                  onChange={(e) => setClubData({ ...clubData!, name: e.target.value })}
                 />
               </div>
               <div className="space-y-2">
@@ -92,7 +92,7 @@ export default function KulupBilgileriPage() {
                 <Textarea
                   id="description"
                   value={clubData?.description || ''}
-                  onChange={(e) => setClubData({ ...clubData, description: e.target.value })}
+                  onChange={(e) => setClubData({ ...clubData!, description: e.target.value })}
                   className="min-h-[120px]"
                 />
               </div>
@@ -102,7 +102,7 @@ export default function KulupBilgileriPage() {
                   id="email"
                   type="email"
                   value={clubData?.email || ''}
-                  onChange={(e) => setClubData({ ...clubData, email: e.target.value })}
+                  onChange={(e) => setClubData({ ...clubData!, email: e.target.value })}
                 />
               </div>
               <div className="space-y-2">
@@ -135,7 +135,7 @@ export default function KulupBilgileriPage() {
                   id="email"
                   type="email"
                   value={clubData?.email || ''}
-                  onChange={(e) => setClubData({ ...clubData, email: e.target.value })}
+                  onChange={(e) => setClubData({ ...clubData!, email: e.target.value })}
                 />
               </div>
               <div className="space-y-2">
