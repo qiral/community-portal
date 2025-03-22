@@ -57,7 +57,7 @@ export function AccountSwitcher() {
           []
         if (response.success) {
           const adminAccounts = response.data.map(
-            (club: { name: string; role: string; id: string }) => ({
+            (club: { name: string; role: string; id: string; logoId: string }) => ({
               name: club.name,
               logoId: selectedClub?.id
                 ? selectedClub.logoId
