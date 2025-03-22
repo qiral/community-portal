@@ -25,7 +25,7 @@ import {
 import { getAdminClubs } from '@/lib/club/clubuser'
 import { useSelectedClub } from '@/lib/useSelectedClub'
 
-const icons = {
+export const icons = {
   AudioWaveform,
   BookOpen,
   Bot,
@@ -60,7 +60,7 @@ export function AccountSwitcher() {
             (club: { name: string; role: string; id: string; logoId: string }) => ({
               name: club.name,
               logoId:
-                selectedClub && 'logoId' in selectedClub
+                selectedClub?.logoId && selectedClub.logoId in icons
                   ? (selectedClub.logoId as keyof typeof icons)
                   : (Object.keys(icons)[
                       Math.floor(Math.random() * Object.keys(icons).length)

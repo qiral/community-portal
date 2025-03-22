@@ -1,7 +1,8 @@
 import { create, SetState } from 'zustand'
+import { icons } from '@/components/admin-page/acc-switch'
 
 interface ClubState {
-  selectedClub: { id: string; name: string; type: string } | null
+  selectedClub: { id: string; name: string; type: string; logoId: keyof typeof icons } | null
   setSelectedClub: (club: { id: string; name: string; type: string }) => void
 }
 
