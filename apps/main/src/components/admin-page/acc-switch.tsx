@@ -60,7 +60,7 @@ export function AccountSwitcher() {
             (club: { name: string; role: string; id: string; logoId: string }) => ({
               name: club.name,
               logoId:
-                'logoId' in selectedClub
+                selectedClub && 'logoId' in selectedClub
                   ? (selectedClub.logoId as keyof typeof icons)
                   : (Object.keys(icons)[
                       Math.floor(Math.random() * Object.keys(icons).length)
