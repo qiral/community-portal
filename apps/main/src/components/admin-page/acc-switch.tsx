@@ -59,11 +59,12 @@ export function AccountSwitcher() {
           const adminAccounts = response.data.map(
             (club: { name: string; role: string; id: string; logoId: string }) => ({
               name: club.name,
-              logoId: selectedClub?.logoId
-                ? selectedClub.logoId
-                : (Object.keys(icons)[
-                    Math.floor(Math.random() * Object.keys(icons).length)
-                  ] as keyof typeof icons),
+              logoId:
+                'logoId' in selectedClub
+                  ? (selectedClub.logoId as keyof typeof icons)
+                  : (Object.keys(icons)[
+                      Math.floor(Math.random() * Object.keys(icons).length)
+                    ] as keyof typeof icons),
               type: club.role,
               id: club.id,
             })
