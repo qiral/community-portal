@@ -13,7 +13,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { useEffect, useState } from 'react'
 import { createClient } from '@/lib/supabase/client'
-import { signOut } from '@/components/auth/Auth'
+import { signOut } from '@/components/auth/auth-handler'
 
 export function Header() {
   const supabase = createClient()
@@ -52,14 +52,15 @@ export function Header() {
     try {
       await signOut()
       setIsLoggedIn(false)
+      window.location.reload()
     } catch (error) {
       console.error('Çıkış yaparken bir hata oluştu:', error)
     }
   }
 
   return (
-    <header className="border-b px-8">
-      <div className="px-4n container flex h-16 min-w-[100%] items-center justify-between">
+    <header className="flex w-full border-b px-0 py-4">
+      <div className="container flex h-8 w-full items-center justify-between px-6">
         <div className="flex items-center gap-6">
           <Link href="/" className="flex items-center">
             <span className="text-xl font-bold">com_portal</span>

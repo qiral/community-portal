@@ -28,7 +28,7 @@ export async function MakeAuthenticatedRequest(
     const response = await fetch(url, {
       method,
       headers,
-      body: body ? JSON.stringify(body) : null,
+      body: method !== 'GET' && body ? JSON.stringify(body) : null,
     })
 
     if (!response.ok) {
