@@ -14,7 +14,12 @@ import { useToast } from '@/hooks/use-toast'
 
 export default function KulupBilgileriPage() {
   const { selectedClub } = useSelectedClub()
-  const [clubData, setClubData] = useState<{ name: string; description: string; email: string; created_at: string } | null>(null)
+  const [clubData, setClubData] = useState<{
+    name: string
+    description: string
+    email: string
+    created_at: string
+  } | null>(null)
 
   useEffect(() => {
     if (!selectedClub) return
@@ -38,7 +43,9 @@ export default function KulupBilgileriPage() {
     if (!clubData) return
 
     try {
-      await updateClub(selectedClub.id, clubData.name, clubData.description, clubData.email)
+      if (selectedClub) {
+        await updateClub(selectedClub.id, clubData.name, clubData.description, clubData.email)
+      }
       localStorage.setItem('selectedClub', JSON.stringify({ ...selectedClub, name: clubData.name }))
       window.location.reload()
       toast({
