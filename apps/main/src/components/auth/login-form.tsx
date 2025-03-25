@@ -7,7 +7,7 @@ import * as z from 'zod'
 import { Button } from '@/components/ui/button'
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
 import { Input } from '@/components/ui/input'
-import { signIn } from './Auth'
+import { signIn } from './auth-handler'
 import { useRouter } from 'next/navigation'
 const loginFormSchema = z.object({
   email: z.string().email({

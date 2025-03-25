@@ -11,7 +11,6 @@ export const metadata: Metadata = {
 export default function LoginPage() {
   return (
     <div className="flex h-screen w-full">
-      {/* Form Section */}
       <div className="flex w-1/3 items-center justify-center bg-slate-100 px-4">
         <div className="flex w-full flex-col items-center space-y-6">
           <div className="flex flex-col space-y-2 text-center">
@@ -30,8 +29,6 @@ export default function LoginPage() {
           </p>
         </div>
       </div>
-
-      {/* Image Section */}
       <div className="relative w-2/3">
         <Image
           src="https://mxayitmkbfthrunrhgfk.supabase.co/storage/v1/object/public/images//login.jpg"
