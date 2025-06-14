@@ -33,7 +33,7 @@ jobs:
 
       # Build packages
       - name: Build packages
-        run: pnpm build --filter "@community/*"
+        run: pnpm build --filter "@community-portal/*"
 
       - name: Create .env file
         run: |
