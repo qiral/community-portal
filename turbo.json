@@ -9,7 +9,8 @@
         "NEXT_PUBLIC_SUPABASE_URL",
         "NEXT_PUBLIC_SUPABASE_KEY",
         "NEXT_PUBLIC_API_URL",
-        "NEXT_PUBLIC_ADMIN_URL"
+        "NEXT_PUBLIC_ADMIN_URL",
+        "NEXT_PUBLIC_MAIN_URL"
       ]
     },
     "lint": {
@@ -22,7 +23,8 @@
         "NEXT_PUBLIC_SUPABASE_URL",
         "NEXT_PUBLIC_SUPABASE_KEY",
         "NEXT_PUBLIC_API_URL",
-        "NEXT_PUBLIC_ADMIN_URL"
+        "NEXT_PUBLIC_ADMIN_URL",
+        "NEXT_PUBLIC_MAIN_URL"
       ]
     },
     "clean": {

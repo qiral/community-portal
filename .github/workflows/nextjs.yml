@@ -37,9 +37,11 @@ jobs:
 
       - name: Create .env file
         run: |
-          echo "NEXT_PUBLIC_SUPABASE_URL=https://dummy.com" >> ./apps/main/.env.local
-          echo "NEXT_PUBLIC_SUPABASE_KEY=dummy" >> ./apps/main/.env.local
-          echo "NEXT_PUBLIC_API_KEY=https://dummy.com" >> ./apps/main/.env.local
+          echo "NEXT_PUBLIC_SUPABASE_URL=https://dummy.com" >> ./.env
+          echo "NEXT_PUBLIC_SUPABASE_KEY=dummy" >> ./.env
+          echo "NEXT_PUBLIC_API_URL=https://dummy.com" >> ./.env
+          echo "NEXT_PUBLIC_MAIN_URL=http://localhost:3000" >> ./.env
+          echo "NEXT_PUBLIC_ADMIN_URL=http://localhost:3010" >> ./.env
       # Build apps
       - name: Build apps
         run: pnpm build --filter "{apps/*}"
