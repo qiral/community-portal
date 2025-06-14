@@ -22,7 +22,7 @@ export default function Home() {
   }, [])
 
   if (isAdmin === null) {
-    return <div>There is no admin accounts found.</div>
+    redirect('/no-admin')
   }
 
   if (isAdmin) {

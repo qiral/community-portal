@@ -28,7 +28,6 @@ import {
   SquareTerminal,
 } from 'lucide-react'
 import { getAdminClubs } from '@community-portal/lib/club/clubuser'
-import { useRouter } from 'next/navigation'
 import { useSelectedClub } from '@community-portal/lib/club/useSelectedClub'
 const icons = {
   AudioWaveform,
@@ -49,7 +48,7 @@ export function AccountSwitcher() {
     { name: string; logoId: keyof typeof icons; type: string; id: string }[]
   >([])
   const { selectedClub, setSelectedClub } = useSelectedClub()
-  const router = useRouter()
+  
 
   React.useEffect(() => {
     const storedClub = localStorage.getItem('selectedClub')
