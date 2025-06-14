@@ -47,11 +47,13 @@ export default function KulupBilgileriPage() {
         await updateClub(selectedClub.id, clubData.name, clubData.description, clubData.email)
       }
       localStorage.setItem('selectedClub', JSON.stringify({ ...selectedClub, name: clubData.name }))
-      window.location.reload()
       toast({
         title: 'Başarılı',
         description: 'Kulüp bilgileri başarıyla güncellendi.',
       })
+      setTimeout(() => {
+        window.location.reload()
+      }, 2000)
     } catch (error) {
       console.error('Güncelleme sırasında hata:', error)
       toast({

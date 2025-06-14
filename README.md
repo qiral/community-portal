@@ -133,7 +133,7 @@ community-portal/
 │   │   ├── eslint/     # ESLint configurations
 │   │   ├── typescript/ # TypeScript configurations
 │   │   └── tailwind/   # Tailwind configurations
-│   └── lib/      # Shared fucntion library
+│   └── lib/      # Shared function library
 └── ...config files
 ```
 
