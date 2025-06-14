@@ -4,7 +4,7 @@ A modern web platform built with Next.js for managing and discovering communitie
 
 ## Features
 
-- 🚀 Modern UI built with Next.js 14 and React 18
+- 🚀 Modern UI built with Next.js 15 and React 19
 - 💅 Styled with Tailwind CSS and Shadcn UI
 - 🎨 Consistent code style with ESLint and Prettier
 - 📱 Fully responsive design
@@ -17,8 +17,8 @@ A modern web platform built with Next.js for managing and discovering communitie
 
 ### Prerequisites
 
-- Node.js (v20 or higher)
-- pnpm (v8.14.3 or higher)
+- Node.js (v24 or higher)
+- pnpm (v10.12.1 or higher)
 
 ## Installation
 
@@ -55,7 +55,7 @@ Navigate to **Project Settings** → **API**. Copy the following keys:
 
 #### 3.3. Configure environment variables:
 
-Add the URL and API keys to `.env.local` file under apps/main:
+Add the URL and API keys to `.env` file under root folder:
 
 ```plaintext
 NEXT_PUBLIC_SUPABASE_URL=https://your-supabase-project-url.supabase.co
@@ -63,6 +63,10 @@ NEXT_PUBLIC_SUPABASE_KEY=your-service-key
 
 #Your backend api url
 NEXT_PUBLIC_API_URL=https://your-api-url.com
+
+#Your frontend apps urls
+NEXT_PUBLIC_MAIN_URL=https://main-app.com
+NEXT_PUBLIC_ADMIN_URL=https://admin-app.com
 ```
 
 ### 4. Start the development server:
@@ -71,10 +75,10 @@ NEXT_PUBLIC_API_URL=https://your-api-url.com
 pnpm dev
 ```
 
-The applications will be available at:
+The applications will be available at: (add these urls to .env file while development)
 
-- Main App: `http://localhost:3000`
-- Admin Panel: `http://localhost:3010`
+- Main App: `http://localhost:3000` #NEXT_PUBLIC_MAIN_URL
+- Admin Panel: `http://localhost:3010` #NEXT_PUBLIC_ADMIN_URL
 
 ## Available Scripts
 
@@ -123,27 +127,25 @@ community-portal/
 │       ├── src/
 │       └── ...
 ├── packages/
-│   ├── ui/         # Shared UI components
-│   │   ├── components/  # Reusable UI components
-│   │   ├── styles/     # Shared styles and themes
-│   │   └── utils/      # UI utilities
+│   ├── components/         # Shared components
+│   │   ├── ui/  # Reusable UI components
 │   ├── config/     # Shared configurations
 │   │   ├── eslint/     # ESLint configurations
 │   │   ├── typescript/ # TypeScript configurations
 │   │   └── tailwind/   # Tailwind configurations
-│   └── utils/      # Shared utility functions
+│   └── lib/      # Shared fucntion library
 └── ...config files
 ```
 
 ## Tech Stack
 
-- **Framework:** Next.js 14
+- **Framework:** Next.js 15
 - **Language:** TypeScript
 - **Styling:** Tailwind CSS
 - **UI Components:** Shadcn UI
 - **Form Handling:** React Hook Form with Zod
 - **Code Quality:** ESLint, Prettier
-- **Package Manager:** pnpm 8.14.3
+- **Package Manager:** pnpm 10.12.1
 - **Build System:** Turborepo
 - **Component Library:** Radix UI
 
