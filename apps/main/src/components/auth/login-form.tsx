@@ -1,13 +1,20 @@
 'use client'
 
+import * as z from 'zod'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import * as z from 'zod'
 import { Button } from '@/components/ui/button'
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { signIn } from './auth-handler'
+import { signIn } from '@/components/auth/auth-handler'
 import { useRouter } from 'next/navigation'
 const loginFormSchema = z.object({
   email: z.string().email({

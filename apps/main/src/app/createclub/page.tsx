@@ -7,8 +7,10 @@ export const metadata = {
 
 export default function CreateClubPage() {
   return (
-    <div className="container max-w-3xl py-10">
-      <ClubForm />
+    <div className="flex min-h-screen items-center justify-center p-4">
+      <div className="w-full max-w-2xl">
+        <ClubForm />
+      </div>
     </div>
   )
 }

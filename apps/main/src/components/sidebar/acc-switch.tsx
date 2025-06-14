@@ -27,9 +27,9 @@ import {
   Settings2,
   SquareTerminal,
 } from 'lucide-react'
-import { getAdminClubs } from '@/lib/club/clubuser'
+import { getAdminClubs } from '@community-portal/lib/club/clubuser'
 import { useRouter } from 'next/navigation'
-import { useSelectedClub } from '@/lib/useSelectedClub'
+import { useSelectedClub } from '@community-portal/lib/club/useSelectedClub'
 const icons = {
   AudioWaveform,
   BookOpen,
@@ -100,7 +100,7 @@ export function AccountSwitcher() {
     if (account.id !== 'default-account') {
       setSelectedClub(account)
       localStorage.setItem('selectedClub', JSON.stringify(account))
-      router.push(`/admin`)
+      window.location.href = process.env.NEXT_PUBLIC_ADMIN_URL || 'localhost:3001'
     }
   }
 

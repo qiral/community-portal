@@ -7,7 +7,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import Image from 'next/image'
 import { Upload, X } from 'lucide-react'
-import { createClub } from '@/lib/club/club'
+import { createClub } from '@community-portal/lib/club/club'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
@@ -27,7 +27,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card'
-import { toast } from '@/hooks/use-toast'
+import { toast } from '@/components/hooks/use-toast'
 
 const clubFormSchema = z.object({
   name: z.string().min(1, 'Kulüp adı gereklidir'),
@@ -94,7 +94,7 @@ export default function ClubForm() {
   }
 
   return (
-    <Card>
+    <Card className="w-full">
       <CardHeader>
         <CardTitle className="text-2xl">Yeni Kulüp Oluştur</CardTitle>
         <CardDescription>Aşağıdaki alanları gerektiği gibi doldurun.</CardDescription>
