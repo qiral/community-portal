@@ -9,7 +9,9 @@ export const metadata = {
 
 export default async function CreateClubPage() {
   const supabase = createClient()
-  const { data: { session } } = await supabase.auth.getSession()
+  const {
+    data: { session },
+  } = await supabase.auth.getSession()
 
   if (!session) {
     redirect('/login')

@@ -87,8 +87,6 @@ export const reducer = (state: State, action: Action): State => {
     case actionTypes.DISMISS_TOAST: {
       const { toastId } = action
 
-    
-    
       if (toastId) {
         addToRemoveQueue(toastId)
       } else {

@@ -48,7 +48,6 @@ export function AccountSwitcher() {
     { name: string; logoId: keyof typeof icons; type: string; id: string }[]
   >([])
   const { selectedClub, setSelectedClub } = useSelectedClub()
-  
 
   React.useEffect(() => {
     const storedClub = localStorage.getItem('selectedClub')
