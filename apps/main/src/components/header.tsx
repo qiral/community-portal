@@ -1,7 +1,7 @@
 'use client'
 
 import Link from 'next/link'
-import { Button } from '@community/ui'
+import { Button } from '@community-portal/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,7 +12,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { useEffect, useState } from 'react'
-import { createClient } from '@/lib/supabase/client'
+import { createClient } from '@community-portal/lib/supabase/client'
 import { signOut } from '@/components/auth/auth-handler'
 
 export function Header() {
@@ -76,10 +76,10 @@ export function Header() {
         {!isLoggedIn ? (
           <div className="flex items-center gap-4">
             <Link href="/login">
-              <Button variant="outline">Giriş Yap</Button>
+              <Button className="outline">Giriş Yap</Button>
             </Link>
             <Link href="/register">
-              <Button variant="outline">Kaydol</Button>
+              <Button className="outline">Kaydol</Button>
             </Link>
           </div>
         ) : (

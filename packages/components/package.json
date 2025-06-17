@@ -1,0 +1,10 @@
+{
+  "name": "@community-portal/components",
+  "version": "1.0.0",
+  "exports": {
+    "./button": "./ui/button.tsx",
+    "./card": "./ui/card.tsx"
+  },
+  "main": "index.js",
+  "packageManager": "pnpm@10.7.1"
+}

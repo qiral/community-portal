@@ -1,0 +1,22 @@
+{
+  "name": "@community-portal/lib",
+  "version": "1.0.0",
+  "dependencies": {
+    "@supabase/realtime-js": "^2.11.10",
+    "@supabase/ssr": "^0.6.1",
+    "@supabase/supabase-js": "^2.50.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.16",
+    "typescript": "^5.3.0"
+  },
+  "exports": {
+    ".": "./index.ts",
+    "./supabase/client": "./supabase/client.ts",
+    "./supabase/server": "./supabase/server.ts",
+    "./supabase/types": "./supabase-types.ts"
+  },
+  "main": "./index.ts",
+  "private": true,
+  "types": "./index.ts"
+}

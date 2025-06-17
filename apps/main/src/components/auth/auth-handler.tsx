@@ -1,6 +1,5 @@
 'use server'
-
-import { createClient } from '@/lib/supabase/server'
+import { createClient } from '@community-portal/lib/supabase/server'
 
 export async function signUp(email: string, password: string) {
   const supabase = await createClient()

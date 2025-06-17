@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
@@ -20,10 +20,12 @@
     ],
     "paths": {
       "@/*": ["./src/*"],
-      "@community/ui": ["../../packages/ui"],
-      "@community/utils": ["../../packages/utils/src"]
+      "@community-portal/lib": ["../../packages/lib"],
+      "@community-portal/lib/*": ["../../packages/lib/*"],
+      "@community-portal/components": ["../../packages/components"],
+      "@community-portal/components/*": ["../../packages/components/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "../../packages/lib/club/useSelectedClub.ts"],
   "exclude": ["node_modules"]
 }

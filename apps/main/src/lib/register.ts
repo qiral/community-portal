@@ -1,5 +1,5 @@
-import { createClient } from '@/lib/supabase/client'
-import { MakeRequest } from '@/lib/request'
+import { createClient } from '@community-portal/lib/supabase/client'
+import { MakeRequest } from '@community-portal/lib/request'
 import { signUp } from '@/components/auth/auth-handler'
 
 export async function registerUser(

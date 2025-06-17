@@ -1,11 +1,18 @@
 'use client'
 
+import * as z from 'zod'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
-import * as z from 'zod'
 import { Button } from '@/components/ui/button'
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '../ui/form'
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from '@/components/ui/form'
 import { registerUser } from '@/lib/register'
 import { Input } from '@/components/ui/input'
 import { useRouter } from 'next/navigation'
